@@ -15,15 +15,17 @@ if __name__ == '__main__':
                         required=True)
     args = parser.parse_args()
     
-    print(args.vid_name)
-    
+    print("Input video name: " + args.vid_name)
+
+    # Extract audio *.wav from the video file.
     cmd = "ffmpeg -i %s -vn %s" % (args.vid_name, args.out_name)
     p = subprocess.Popen(cmd.split(" "),
                          stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
     (output, stderr) = p.communicate()
     print(output, stderr)
-    
+
+    # Cut out the first x seconds of the *.wav file.
     cmd = "ffmpeg -ss 0 -t 100 -i %s %s" % (
             args.out_name, 
             args.out_name.split(".")[0] + "_100.wav")
@@ -32,7 +34,8 @@ if __name__ == '__main__':
                          stderr=subprocess.PIPE)
     (output, stderr) = p.communicate()
     print(output, stderr)
-    
+
+    # Generate spectrogram using librosa.
     y, sr = librosa.load(args.out_name.split(".")[0] + "_100.wav")
     S = librosa.feature.melspectrogram(y=y, sr=sr, fmax=1000)
     plt.figure(figsize=(10, 4))
@@ -47,5 +50,3 @@ if __name__ == '__main__':
     yft = librosa.core.stft(y)
     print(yft)
     print(yft.shape)
-    
-    
