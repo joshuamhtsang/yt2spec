@@ -7,6 +7,11 @@ import librosa.display
 import matplotlib
 import matplotlib.pyplot as plt
 
+
+def audio_cut():
+    print("Placeholder")
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--vid_name", help="Video file to process.",
