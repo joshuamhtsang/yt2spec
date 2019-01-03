@@ -9,10 +9,12 @@ import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--vid_name", help="blah.",
+    parser.add_argument("--vid_name", help="Video file to process.",
                         required=True)
-    parser.add_argument("--out_name", help="blah.",
+    parser.add_argument("--out_name", help="Name of extracted audio file.",
                         required=True)
+    parser.add_argument("--t_start", help="Start time of audio cut-out.")
+    parser.add_argument("--cut_length", help="Length, in seconds, of audio to cut out.")
     args = parser.parse_args()
     
     print("Input video name: " + args.vid_name)
@@ -26,8 +28,10 @@ if __name__ == '__main__':
     print(output, stderr)
 
     # Cut out the first x seconds of the *.wav file.
-    cmd = "ffmpeg -ss 0 -t 100 -i %s %s" % (
-            args.out_name, 
+    cmd = "ffmpeg -ss %s -t %s -i %s %s" % (
+            args.t_start,
+            args.cut_length,
+            args.out_name,
             args.out_name.split(".")[0] + "_100.wav")
     p = subprocess.Popen(cmd.split(" "),
                          stdin=subprocess.PIPE, stdout=subprocess.PIPE,
