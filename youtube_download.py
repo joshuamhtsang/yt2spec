@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     print(output)
 
-    cmd = "youtube-dl -o %s.%s -f 18 %s" % (video_id, "mp4", str(args.url))
+    cmd = "youtube-dl -o %s.%s -f best %s" % (video_id, "mp4", str(args.url))
     print(cmd)
     p = subprocess.Popen(cmd.split(" "),
                          stdin=subprocess.PIPE, stdout=subprocess.PIPE,
