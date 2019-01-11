@@ -23,10 +23,10 @@ if __name__ == '__main__':
     audio_ninja.extract_wav(args.vid_name, args.out_name)
 
     # Cut out a section of audio.
-    audio_ninja.audio_cut(args.out_name, args.t_start, args.cut_length, args.out_name.split(".")[0] + "_100.wav")
+    outname_final = audio_ninja.audio_cut(args.out_name, args.t_start, args.cut_length, args.out_name)
 
     # Generate spectrogram using librosa.
-    y, sr = librosa.load(args.out_name.split(".")[0] + "_100.wav")
+    y, sr = librosa.load(outname_final)
     S = librosa.feature.melspectrogram(y=y, sr=sr, fmax=1000)
     plt.figure(figsize=(10, 4))
     librosa.display.specshow(librosa.power_to_db(S), y_axis='mel', x_axis='time')
