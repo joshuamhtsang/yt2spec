@@ -12,7 +12,7 @@ def extract_wav(filename, outname):
 
 # Cut out a section of audio.
 def audio_cut(filename, t_start, cut_length, outname):
-    outname_final = outname.split(".")[0] + "_" + str(t_start) + "_" + str(cut_length) + ".wav"
+    outname_final = '%s_%s_%s.wav' % (outname.split(".")[0], str(t_start), str(cut_length))
 
     cmd = "ffmpeg -ss %s -t %s -i %s %s" % (
             t_start,
