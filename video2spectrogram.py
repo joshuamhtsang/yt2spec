@@ -13,7 +13,7 @@ if __name__ == '__main__':
                         required=True)
     parser.add_argument("--out_name", help="Name of extracted audio file (something.wav).",
                         required=True)
-    parser.add_argument("--t_start", help="Start time of audio cut-out.")
+    parser.add_argument("--t_start", heplp="Start time of audio cut-out.")
     parser.add_argument("--cut_length", help="Length, in seconds, of audio to cut out.")
     args = parser.parse_args()
     
