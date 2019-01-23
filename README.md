@@ -11,3 +11,14 @@ $ brew install ffmpeg
 # Run the code:
 
 $ python3 video2spectrogram.py --vid_name Ag60ZF-IdKk.mp4 --out_name dummy.wav --t_start 1 --cut_length 10
+
+
+# Docker: Build image:
+
+In the directory containing the Dockerfile, do:
+
+$ docker build --tag advert_detection .
+
+Run a container:
+
+$ docker run -it advert_detection bash
