@@ -7,6 +7,10 @@ You may want to run everything in a virtualenv.  In the project root directory:
 
 $ virtualenv -p python3 .
 
+Then activate:
+
+$ source bin/activate
+
 And to install requires packages:
 
 $ pip3 install -r requirements.txt
