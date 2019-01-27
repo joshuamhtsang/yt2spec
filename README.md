@@ -20,7 +20,10 @@ $ pip3 install -r requirements.txt
 This code requires the 'ffmpeg' command-line utility to be installed
 in order to work.
 
-To install 'ffmpeg' on Mac OS with Homebrew:
+On Linux:
+$ apt update && apt install -y ffmpeg
+
+On Mac OS with Homebrew:
 $ brew install ffmpeg
 
 
@@ -43,3 +46,39 @@ $ docker build --tag advert_detection .
 Run a container:
 
 $ docker run -it advert_detection bash
+
+
+### Run with docker-compose
+
+
+Install docker and docker-compose following the official documentation:
+
+1. Docker:
+https://docs.docker.com/install/linux/docker-ce/ubuntu/
+This installation process takes maybe 10 minutes, but you just copy/paste
+the instructions on that page into terminal/terminator.
+
+2. Docker Compose:
+https://docs.docker.com/compose/install/#install-compose
+Again, just follow the instructions.
+
+To run docker without sudo, you need to create the docker group:
+
+1. Create the docker group.
+$ sudo groupadd docker
+
+2. Add your user to the docker group.
+$ sudo usermod -aG docker $USER
+
+3. Log out and log back in so that your group membership is re-evaluated.
+
+4. Verify that you can run docker commands without sudo.
+$ docker run hello-world
+
+Now you can do:
+
+$ docker-compose up
+
+If you have made edits to the Dockerfile, then you need to rebuild the image:
+
+$ docker-compose up --build
