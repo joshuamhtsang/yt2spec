@@ -108,5 +108,6 @@ bin/
 include/
 local/
 share/
+etc/
 .idea/
 *.mp4

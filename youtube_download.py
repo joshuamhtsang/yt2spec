@@ -3,7 +3,7 @@ import subprocess
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--url", help="URL of yYouTube video to Download.",
+    parser.add_argument("--url", help="URL of YouTube video to Download.",
                         required=True)
     args = parser.parse_args()
     print(args.url)
