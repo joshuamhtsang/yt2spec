@@ -1,6 +1,7 @@
 ### advert_detection
 Advert detection using audio and visual processing techniques.
 
+
 ### pip3 install required packages:
 
 You may want to run everything in a virtualenv.  In the project root directory:
@@ -16,7 +17,7 @@ And to install requires packages:
 $ pip3 install -r requirements.txt
 
 
-### Install 'ffmpeg'
+### Install 'ffmpeg':
 This code requires the 'ffmpeg' command-line utility to be installed
 in order to work.
 
@@ -50,7 +51,6 @@ $ docker run -it advert_detection bash
 
 ### Run with docker-compose
 
-
 Install docker and docker-compose following the official documentation:
 
 1. Docker:
@@ -82,3 +82,10 @@ $ docker-compose up
 If you have made edits to the Dockerfile, then you need to rebuild the image:
 
 $ docker-compose up --build
+
+
+### Manual testing of REST API
+
+Try out the 'yt2melspec' route:
+
+$ curl localhost:6060/yt2melspec?id=https://www.youtube.com/watch?v=ilNEqmfUyzI

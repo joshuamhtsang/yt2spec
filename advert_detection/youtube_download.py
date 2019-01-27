@@ -3,9 +3,7 @@ import subprocess
 
 
 def downloader(yt_url):
-
     try:
-        video_id = yt_url.split("=")[-1].split("&")[0]
         video_id = yt_url.split("?")[-1].split("=")[1]
         print("Video ID: ", video_id)
     except:
@@ -17,20 +15,20 @@ def downloader(yt_url):
     p = subprocess.Popen(cmd.split(" "), stdin=subprocess.PIPE,
                          stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     (output, stderr) = p.communicate()
-
     print(output)
 
     # Download the 'best' format for mp4 format.
-    cmd = "youtube-dl -o %s.%s -f best %s" % (video_id, "mp4", str(yt_url))
+    filename = "%s.%s" % (video_id, "mp4")
+
+    cmd = "youtube-dl -o %s -f best %s" % (filename, str(yt_url))
     print(cmd)
     p = subprocess.Popen(cmd.split(" "),
                          stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
     (output, stderr) = p.communicate()
-
     print(output)
 
-    return True
+    return filename
 
 
 if __name__ == '__main__':
