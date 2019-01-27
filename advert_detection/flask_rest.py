@@ -2,6 +2,7 @@ from flask_restful import Api
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
+import youtube_download
 
 app = Flask(__name__)
 CORS(app)
@@ -27,6 +28,19 @@ def melspec():
     return jsonify({
         "x": x
     })
+
+
+@app.route("/yt2melspec")
+def yt2melspec():
+    yt_url = request.args.get("id", default=None, type=str)
+
+
+
+    response = {
+        "spec_url": "http://joshuatsang.net/blah"
+    }
+
+    return jsonify(response)
 
 
 if __name__ == "__main__":
