@@ -32,11 +32,11 @@ def yt2melspec():
     return jsonify(response)
 
 
-@app.route("/testjson", method=['POST'])
+@app.route("/testjson", methods=['POST'])
 def testjson():
-    request = request.get_json()
+    req_data = request.get_json()
 
-    url = request["url"]
+    url = req_data["url"]
 
     response = {
         "url": url
