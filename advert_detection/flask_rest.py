@@ -14,18 +14,6 @@ def returnx():
     x = request.args.get("x", default=None, type=int)
 
     return jsonify({
-        "x": x,
-        "objectsDetected": "dog, cat"
-    })
-
-
-@app.route("/melspec")
-def melspec():
-    x = request.args.get("x", default=None, type=int)
-
-
-
-    return jsonify({
         "x": x
     })
 
@@ -39,6 +27,19 @@ def yt2melspec():
 
     response = {
         "spec_url": "http://joshuatsang.net/blah"
+    }
+
+    return jsonify(response)
+
+
+@app.route("/testjson", method=['POST'])
+def testjson():
+    request = request.get_json()
+
+    url = request["url"]
+
+    response = {
+        "url": url
     }
 
     return jsonify(response)

@@ -86,6 +86,13 @@ $ docker-compose up --build
 
 ### Manual testing of REST API
 
-Try out the 'yt2melspec' route:
+Try out the 'yt2melspec' route/endpoint:
 
-$ curl localhost:6060/yt2melspec?id=https://www.youtube.com/watch?v=ilNEqmfUyzI
+$ curl localhost:6060/yt2melspec?url=https://www.youtube.com/watch?v=ilNEqmfUyzI
+
+Try the 'testjson' route/endpoint:
+
+$ curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"url":"https://www.youtube.com/watch?v=ilNEqmfUyzI"}' \
+  localhost:6060/testjson
