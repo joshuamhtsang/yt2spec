@@ -7,6 +7,7 @@ from audio_ninja import extract_wav, audio_cut
 from video2spectrogram import audio2spectrogram
 
 import uuid
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -50,7 +51,13 @@ def testjson():
     audio_cut_filename = audio_cut(audio_filename, 1, 61, audio_filename.split(".")[0])
     spec_filename = audio2spectrogram(audio_cut_filename)
 
-    spec_url = str(uuid.uuid4()) + '.png'
+    # Rename the spectrogram to have UUID as name.
+    print("spec_filename = ", spec_filename)
+    uid = uuid.uuid4()
+    uid_filename = str(uid) + '.' + spec_filename.split(".")[-1]
+    os.rename('./' + spec_filename, './advert_detection/static/' + uid_filename)
+
+    spec_url = url_for('static', filename=uid_filename)
 
     response = {
         "url": yt_url,

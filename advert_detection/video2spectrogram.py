@@ -9,7 +9,7 @@ import os
 
 
 def audio2spectrogram(audio_filename):
-    spec_filename = "spec_" + audio_filename.split(".")[0]
+    spec_filename = "spec_" + audio_filename.split(".")[0] + '.png'
 
     y, sr = librosa.load(audio_filename)
     S = librosa.feature.melspectrogram(y=y, sr=sr, fmax=1000)
@@ -19,7 +19,7 @@ def audio2spectrogram(audio_filename):
     plt.title('Mel spectrogram')
     plt.tight_layout()
     # plt.show()
-    plt.savefig(spec_filename.split(".")[0] + '.png')
+    plt.savefig(spec_filename)
     plt.close()
 
     yft = librosa.core.stft(y)
