@@ -9,6 +9,8 @@ def extract_wav(filename, outname):
     (output, stderr) = p.communicate()
     print(output, stderr)
 
+    return outname
+
 
 # Cut out a section of audio.
 def audio_cut(filename, t_start, cut_length, outname):

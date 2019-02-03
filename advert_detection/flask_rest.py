@@ -6,6 +6,8 @@ from youtube_download import downloader
 from audio_ninja import extract_wav, audio_cut
 from video2spectrogram import audio2spectrogram
 
+import uuid
+
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
@@ -48,7 +50,7 @@ def testjson():
     audio_cut_filename = audio_cut(audio_filename, 1, 61, audio_filename.split(".")[0])
     spec_filename = audio2spectrogram(audio_cut_filename)
 
-    spec_url = 'placeholder'
+    spec_url = str(uuid.uuid4()) + '.png'
 
     response = {
         "url": yt_url,
