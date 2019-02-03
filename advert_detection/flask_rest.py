@@ -23,22 +23,8 @@ def returnx():
     })
 
 
-@app.route("/yt2melspec")
+@app.route("/yt2melspec", methods=['POST'])
 def yt2melspec():
-    yt_url = request.args.get("url", default=None, type=str)
-
-    video_filename = downloader(yt_url)
-    print("Video %s has been downloaded!" % video_filename)
-
-    response = {
-        "spec_url": "http://joshuatsang.net/blah"
-    }
-
-    return jsonify(response)
-
-
-@app.route("/testjson", methods=['POST'])
-def testjson():
     req_data = request.get_json()
 
     yt_url = req_data["url"]
