@@ -3,7 +3,7 @@ version: '3'
 services:
   restapi:
     volumes:
-      - .:/usr/local/src/advert_detection
+      - ./advert_detection/:/usr/local/src/advert_detection/
     build:
       context: ./advert_detection
       dockerfile: Dockerfile
