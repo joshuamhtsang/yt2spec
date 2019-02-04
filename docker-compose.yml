@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  restapi:
+    volumes:
+      - ./advert_detection/:/usr/local/src/advert_detection/
+    build:
+      context: ./advert_detection
+      dockerfile: Dockerfile
+    command: >
+      python3 ./advert_detection/flask_rest.py
+    ports:
+      - 6060:6060
