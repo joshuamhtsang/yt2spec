@@ -41,7 +41,7 @@ def yt2melspec():
     print("spec_filename = ", spec_filename)
     uid = uuid.uuid4()
     uid_filename = str(uid) + '.' + spec_filename.split(".")[-1]
-    os.rename('./' + spec_filename, './advert_detection/static/' + uid_filename)
+    os.rename('./' + spec_filename, './static/' + uid_filename)
 
     spec_url = url_for('static', filename=uid_filename)
 
