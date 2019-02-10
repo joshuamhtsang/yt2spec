@@ -92,3 +92,7 @@ $ curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"url":"https://www.youtube.com/watch?v=ilNEqmfUyzI"}' \
   localhost:6060/yt2melspec
+
+The response will look like:
+
+{"spec_url":"/static/1608ee35-f343-460b-8e84-ffc5a31e015c.png","url":"https://www.youtube.com/watch?v=ilNEqmfUyzI"}
