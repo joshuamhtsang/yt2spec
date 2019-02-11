@@ -3,6 +3,9 @@ import subprocess
 
 
 def downloader(yt_url):
+    # Remove extraneous parameters in YouTube URL.
+    yt_url = yt_url.split("&")[0]
+
     try:
         video_id = yt_url.split("?")[-1].split("=")[1]
         print("Video ID: ", video_id)

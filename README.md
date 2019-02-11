@@ -75,16 +75,16 @@ $ sudo usermod -aG docker $USER
 4. Verify that you can run docker commands without sudo.
 $ docker run hello-world
 
-Now you can do:
+Now, in the project root containing 'docker-compose.yml':
 
-$ docker-compose up
+$ docker-compose down ; docker-compose up --build
 
 If you have made edits to the Dockerfile, then you need to rebuild the image:
 
 $ docker-compose up --build
 
 
-### Manual testing of REST API
+### Manual testing of yt2melspec REST API.
 
 Try out the 'yt2melspec' route/endpoint:
 
