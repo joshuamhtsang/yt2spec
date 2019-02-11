@@ -4,7 +4,7 @@ import subprocess
 
 def downloader(yt_url):
     try:
-        video_id = yt_url.split("?")[-1].split("=")[1]
+        video_id = yt_url.split("?")[-1].split("&")[0].split("=")[1]
         print("Video ID: ", video_id)
     except:
         return False
