@@ -8,6 +8,7 @@ from video2spectrogram import audio2spectrogram
 
 import uuid
 import os
+import subprocess
 
 app = Flask(__name__)
 CORS(app)
@@ -26,15 +27,23 @@ def returnx():
 @app.route("/yt2melspec", methods=['POST'])
 def yt2melspec():
     req_data = request.get_json()
-
     yt_url = req_data["url"]
 
+    # Download *.mp4 video file.
     video_filename = downloader(yt_url)
     print("Video %s has been downloaded!" % video_filename)
 
+    # Extract *.wav from the *.mp4 file.
     audio_filename = extract_wav(video_filename, video_filename.split(".")[0] + '.wav')
     # Restrict to first 60 seconds for now.
     audio_cut_filename = audio_cut(audio_filename, 1, 61, audio_filename.split(".")[0])
+    # Delete redundant *.mp4 and uncut *.mp4.
+    cmd = "rm %s %s" % (str(video_filename), str(audio_filename))
+    p = subprocess.Popen(cmd.split(" "), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    (output, stderr) = p.communicate()
+    print(output)
+
+    # Compute Mel-spectrogram.
     spec_filename = audio2spectrogram(audio_cut_filename)
 
     # Rename the spectrogram to have UUID as name.
@@ -55,14 +64,8 @@ def yt2melspec():
 
 @app.route("/returnimg", methods=['GET'])
 def return_img():
-
     img_url = url_for('static', filename='curry.png')
 
-    response ={
-        "img_url": img_url
-    }
-
-    #return jsonify(response)
     return '<img src=' + img_url + '>'
 
 
