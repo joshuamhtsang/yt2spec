@@ -9,5 +9,4 @@ RUN pip3 install -r /usr/local/src/advert_detection/requirements.txt
 RUN pip3 install --upgrade youtube-dl
 COPY . /usr/local/src/advert_detection/
 WORKDIR /usr/local/src/advert_detection/
-RUN export PYTHONPATH=/usr/local/src/advert_detection/advert_detection
-#ENV PYTHONPATH /usr/local/src/advert_detection/advert_detection
+ENV PYTHONPATH="${PYTHONPATH}:/usr/local/src/advert_detection/advert_detection"
