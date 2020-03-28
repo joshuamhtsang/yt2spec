@@ -3,9 +3,9 @@ version: '3'
 services:
   restapi:
     #volumes:
-    #  - ./advert_detection/:/usr/local/src/advert_detection/
+    #  - ./yt2spec/:/usr/local/src/yt2spec/
     build:
-      context: ./advert_detection
+      context: ./yt2spec
       dockerfile: Dockerfile
     command: >
       python3 ./flask_rest.py
