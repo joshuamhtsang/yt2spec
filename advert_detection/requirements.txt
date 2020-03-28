@@ -27,5 +27,5 @@ resampy==0.2.1
 scikit-learn==0.20.2
 scipy==1.2.0
 six==1.12.0
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 WTForms==2.2.1
