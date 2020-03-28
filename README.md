@@ -42,11 +42,11 @@ On Mac OS with Homebrew:
 
 In the directory containing the Dockerfile, do:
 
-    $ docker build --tag advert_detection .
+    $ docker build --tag yt2spec .
 
 Run a container:
 
-    $ docker run -it advert_detection bash
+    $ docker run -it yt2spec bash
 
 
 ### Run with docker-compose
