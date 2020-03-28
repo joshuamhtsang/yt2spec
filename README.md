@@ -1,5 +1,5 @@
-### advert_detection
-Advert detection using audio and visual processing techniques.
+### yt2spec
+Convert audio into spectrograms.
 
 
 ### pip3 install required packages:
